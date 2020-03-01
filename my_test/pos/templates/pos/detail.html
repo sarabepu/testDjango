@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle</title>
+</head>
+<body>
+{% if product %}
+    <ul>
+    <li>nombre:{{product.nombre}}</li>
+    <li>cantidad:{{product.cantidad}}</li>
+    <li>precio:{{product.precio}}</li>
+    
+    </ul>
+{% endif %}
+
+{% if client %}
+    <ul>
+    <li>nombre:{{client.nombre}}</li>
+    <li>cedula:{{client.cedula}}</li>
+    
+    </ul>
+{% endif %}
+
+{% if factura %}
+    <ul>
+    <li>id:{{factura.id}}</li>
+    <li>costo:{{factura.costo}}</li>
+    <li><a href={% url 'productosC' factura.carrito.id %}>carrito:{{factura.carrito.id}}</a>
+    <li><a href={% url 'clienteD' factura.carrito.cliente.id %}>cliente:{{factura.carrito.cliente.nombre}}</a>
+    
+    </ul>
+{% endif %}
+
+
+</body>
+</html>

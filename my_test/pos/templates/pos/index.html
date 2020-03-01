@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermercado</title>
+</head>
+<body>
+{% if products %}
+
+<h2>Productos</h2>
+    <ul>
+    {% for product in products %}
+        <li><a href={% url 'productoD' product.id %}>{{ product.nombre }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+    {% if clients %}
+    
+    <h2>Clientes</h2>
+        <ul>
+        {% for client in clients %}
+            <li><a href={% url 'clienteD' client.id %}>{{ client.nombre }}</a></li>
+        {% endfor %}
+        </ul>
+{% endif %}
+
+    {% if carritos %}
+    
+<h2>Carritos</h2>
+        <ul>
+        {% for carrito in carritos %}
+            <li><a href={% url 'productosC' carrito.id %}>{{ carrito.id }}</a></li>
+        {% endfor %}
+        </ul>
+{% endif %}
+{% if facturas %}
+    
+<h2>Facturas</h2>
+        <ul>
+        {% for factura in facturas %}
+            <li><a href={% url 'facturaD' factura.id %}>{{ factura.id }}</a></li>
+        {% endfor %}
+        </ul>
+{% endif %}
+
+{% if productos_factura %}
+    
+<h2>Productos de la Factura {{factura}}</h2>
+        <ul>
+        {% for producto in productos_factura %}
+            <li><a href={% url 'productoD' producto.id %}>{{ producto.nombre }}</a></li>
+        {% endfor %}
+        </ul>
+{% endif %}
+
+
+{% if productos_carrito %}
+    
+<h2>Productos del carrito {{carrito}}</h2>
+        <ul>
+        {% for producto in productos_carrito %}
+            <li><a href={% url 'productoD' producto.producto.id %}>{{ producto.producto.nombre }}</a></li>
+        {% endfor %}
+        </ul>
+{% endif %}
+
+</body>
+</html>
